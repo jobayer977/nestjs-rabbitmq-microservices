@@ -11,8 +11,8 @@ export class OrdersController {
 	) {}
 
 	@Post()
-	create(@Body() payload: OrderDto) {
-		this.client.emit('ORDER_CREATED', payload);
-		return this.ordersService.createOrder(payload);
+	async create(@Body() payload: OrderDto) {
+		this.client.emit('order_created', payload);
+		return this.ordersService.create(payload);
 	}
 }

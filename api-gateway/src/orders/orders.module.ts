@@ -5,8 +5,6 @@ import { OrdersController } from './orders.controller';
 import { OrdersService } from './orders.service';
 
 @Module({
-	controllers: [OrdersController],
-	providers: [OrdersService],
 	imports: [
 		ClientsModule.register([
 			{
@@ -16,7 +14,7 @@ import { OrdersService } from './orders.service';
 					urls: [
 						'amqps://ciifbqid:jsOsM1MUHJ8jM4PEg-Lmce8LPSImIxTK@shark.rmq.cloudamqp.com/ciifbqid',
 					],
-					queue: 'NOTIFICATION_QUEUE',
+					queue: 'notification_queue',
 					queueOptions: {
 						durable: false,
 					},
@@ -24,5 +22,7 @@ import { OrdersService } from './orders.service';
 			},
 		]),
 	],
+	controllers: [OrdersController],
+	providers: [OrdersService],
 })
 export class OrdersModule {}
